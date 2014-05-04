@@ -25,6 +25,7 @@ def get_links(rdb, key=KEY_IN):
     return zip(hashes, map(jsonpickle.decode, rdb.hmget(KEY_LINKS, *hashes))) if hashes else []
 
 @get('/in')
+@get('/')
 def unread(rdb):
     return template('unread.html', links=list(get_links(rdb, KEY_IN)), in_=True, title='In')
 
