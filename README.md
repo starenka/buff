@@ -5,7 +5,7 @@ Buff is a supersimple bookmarking app you can stick your links in. You can delet
 ![buff](https://github.com/starenka/buff/raw/master/screenshot.png)
 
 ###Where is a bookmarklet?
-You really don't need one. Just `POST` a `url` parameter with your url to `/create`. Config custom search in your [favorite browser](http://www.opera.com/help/tutorials/intro/customize/#searchengine) or use curl or whatever.
+You really don't need one. Just `POST` an `url` parameter with your url to `/create`. Config custom search in your [favorite browser](http://www.opera.com/help/tutorials/intro/customize/#searchengine) or use curl or whatever.
 
 ##Running
 
