@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <form action="/create" method="post" role="form">
+    <div class="input-group">
+      <span class="input-group-addon">url</span>
+      <input type="text" class="form-control" placeholder="url" name="url">
+    </div>
+  </form>
+{% endblock %}

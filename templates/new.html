@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="page-header">
+    <h1><a href="{{ url }}">{{ url }}</a>&nbsp;{% if is_new %}added{% else %}<small>is already in</small>{% endif %}!</h1>
+  </div>
+{% endblock %}
