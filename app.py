@@ -1,4 +1,4 @@
-import hashlib, datetime, re
+import hashlib, datetime
 
 from bottle import (get, post, request, run, default_app, app, install,
             redirect, TEMPLATE_PATH, jinja2_template as template)
