@@ -3,12 +3,12 @@
   <div class="list-group">
     {% for hash, one in links %}
       <ul class="list-group">
-	<li class="list-group-item">
-	  <a href="/set-unread/{{ hash }}"><span class="glyphicon glyphicon-eye-close">&nbsp;</span></a>
-    	  <a target="_blank" href="{{ one.url }}">{{ one.title|default(one.url, true) }}</a>
-	  &nbsp;<span style="color: grey; font-size: 50%">{{one.url}}</span>	  
-	  <span class="badge">{{ one.stamp.strftime('%d.%m. %H:%M') }}</span>
-	</li>
+    <li class="list-group-item">
+      <a href="/set-unread/{{ hash }}"><span class="glyphicon glyphicon-eye-close">&nbsp;</span></a>
+          <a target="_blank" href="{{ one.url }}">{{ one.title|default(one.url, true) }}</a>
+      &nbsp;<span style="color: grey; font-size: 50%">{{ one.url }}</span>
+      <span class="badge">{{ one.stamp.strftime('%d.%m. %H:%M') }}</span>
+    </li>
     {% endfor %}
 </div>
 {% endblock %}

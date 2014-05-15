@@ -41,12 +41,13 @@ def read(rdb):
 def add(rdb):
     url = request.forms.get('url')
     hash = hashlib.sha224(url).hexdigest()
-    is_new = not rdb.hexists(KEY_LINKS, hash)
-    if is_new:
+    ihas = rdb.hget(KEY_LINKS, hash)
+    if not ihas:
         rec = dict(url=url, stamp=datetime.datetime.now(), title=get_url_title(url))
         rdb.hset(KEY_LINKS, hash, jsonpickle.encode(rec))
         rdb.lpush(KEY_IN, hash)
-    return template('new.html', is_new=is_new, url=url, title='New link')
+    item = jsonpickle.decode(ihas) if ihas else rec
+    return template('new.html', is_new=not ihas, item=item, title='New link')
 
 @get('/add')
 def add_form():

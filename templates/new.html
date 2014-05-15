@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-  <div class="page-header">
-    <h1><a href="{{ url }}">{{ url }}</a>&nbsp;{% if is_new %}added{% else %}<small>is already in</small>{% endif %}!</h1>
+  <div class="well">
+    <h1><a href="{{ item.url }}">{{ item.title }}</a></h1>
+    <div style="color: grey; font-size: 50%">{{ item.url }})</div>
+    <h3>{% if is_new %}added{% else %}is <em>already in</em> since {{ item.stamp.strftime('%d.%m. %H:%M') }}{% endif %}!</h3>
   </div>
 {% endblock %}
