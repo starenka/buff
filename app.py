@@ -1,9 +1,11 @@
+#!/usr/bin/env python
+# coding=utf-8
+
 import hashlib, datetime
 
 from bottle import (get, post, request, run, default_app, app, install,
             redirect, TEMPLATE_PATH, jinja2_template as template)
 import bottle_redis, jsonpickle, requests
-
 from bs4 import BeautifulSoup
 
 plugin = bottle_redis.RedisPlugin(host='localhost')
@@ -13,12 +15,14 @@ KEY_IN, KEY_READ, KEY_LINKS = 'BUFF_in', 'BUFF_read', 'BUFF_links'
 TEMPLATE_PATH.append('./templates')
 
 def get_url_title(url):
+    url = url.strip()
     try:
         r = requests.get(url, timeout=30, stream=False, verify=False)
         soup = BeautifulSoup(r.content)
-        return unicode(soup.title.string)
+        title, h1 = soup.title.string, soup.find('h1').text
+        return unicode(title or h1)
     except (AttributeError, requests.exceptions.Timeout) as e:
-        return None
+        return url[:60]
 
 def get_links(rdb, key=KEY_IN):
     hashes = rdb.lrange(key, 0, rdb.llen(key))
