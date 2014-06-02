@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  {% if unread.title or read.title %}
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>&ldquo;{{ term }}&rdquo;</strong> in titles</div>
+      <div class="list-group">
+        {% for hash, one in unread.title %}
+          {% include '_unread.html' %}
+        {% endfor %}
+        {% for hash, one in read.title %}
+          {% include '_read.html' %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if unread.url or read.url %}
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>&ldquo;{{ term }}&rdquo;</strong> in URLs</div>
+      <div class="list-group">
+        {% for hash, one in unread.url %}
+          {% include '_unread.html' %}
+        {% endfor %}
+        {% for hash, one in read.url %}
+          {% include '_read.html' %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+{% endblock %}

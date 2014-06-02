@@ -35,7 +35,7 @@ def unread(rdb):
 
 @get('/read')
 def read(rdb):
-    return template('read.html', links=list(get_links(rdb, KEY_READ)), read=True, title='Read')
+    return template('read.html', links=list(get_links(rdb, KEY_READ)), read_=True, title='Read')
 
 @post('/create')
 def add(rdb):
@@ -52,7 +52,6 @@ def add(rdb):
 @get('/add')
 def add_form():
     return template('add.html', title='Add URL', add_=True)
-
 
 @get('/set-read/<hash>')
 def setread(hash, rdb):
@@ -72,6 +71,21 @@ def delete(hash, rdb):
     rdb.lrem(KEY_IN, hash)
     rdb.hdel(KEY_LINKS, hash)
     redirect('/in')
+
+@post('/search')
+def search(rdb): #poor man's search (i don't need zsets/acs now)
+    def _search(term, links):
+        term = term.lower()
+
+        return {'title': filter(lambda x: x[1]['title'] and term in x[1]['title'].lower(), links),
+                'url': filter(lambda x: term in x[1]['url'].lower(), links)}
+
+    term = unicode(request.forms.get('term').decode('utf8'))
+    title = u'Results for %s' % term
+    unread = _search(term, get_links(rdb, key=KEY_IN))
+    read = _search(term, get_links(rdb, key=KEY_READ))
+
+    return template('search.html', title=title, term=term, read=read, unread=unread)
 
 
 if __name__ == '__main__':

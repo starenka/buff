@@ -15,8 +15,19 @@
   <body>
     <ul class="nav nav-tabs">
       <li{% if in_ %} class="active"{% endif %}><a href="/in">in</a></li>
-      <li{% if read %} class="active"{% endif %}><a href="/read">read</a></li>
+      <li{% if read_ %} class="active"{% endif %}><a href="/read">read</a></li>
       <li{% if add_ %} class="active"{% endif %}><a href="/add">add</a></li>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group input-group">
+            <span class="input-group-addon">/</span>
+            <form action="/search" method="post">
+              <input class="form-control" placeholder="{{ term }}" value="{{ term }}" name="term"/>
+            </form>
+            <span class="input-group-btn"><button class="btn btn-default" type="button">Search</button></span>
+          </div>
+        </div>
+      </div>
     </ul>
     {% block content %}{% endblock %}
     <a href="https://github.com/starenka/buff" title="Fork me on GitHub">

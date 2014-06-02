@@ -1,0 +1,7 @@
+    <li class="list-group-item">
+      <a href="/set-read/{{ hash }}"><span class="glyphicon glyphicon-eye-open">&nbsp;</span></a>
+      <a href="/del/{{ hash }}"><span class="glyphicon glyphicon-remove-sign">&nbsp;</span></a>
+      <a target="_blank" href="{{ one.url }}">{{ one.title|default(one.url, true) }}</a>
+      &nbsp;<span style="color: grey; font-size: 50%">{{one.url}}</span>
+      <span class="badge">{{ one.stamp.strftime('%d.%m. %H:%M') }}</span>
+    </li>
