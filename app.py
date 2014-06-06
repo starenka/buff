@@ -22,7 +22,7 @@ def get_url_title(url):
         title, h1 = soup.title.string, soup.find('h1').text
         return unicode(title or h1)
     except (AttributeError, requests.exceptions.Timeout) as e:
-        return url[:60]
+        return url[:70] + u'…'
 
 def get_links(rdb, key=KEY_IN):
     hashes = rdb.lrange(key, 0, rdb.llen(key))

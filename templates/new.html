@@ -2,7 +2,9 @@
 {% block content %}
   <div class="well">
     <h1><a href="{{ item.url }}">{{ item.title }}</a></h1>
-    <div style="color: grey; font-size: 50%">{{ item.url }})</div>
+    <div style="color: grey; font-size: 50%">{{ item.url }}</div>
     <h3>{% if is_new %}added{% else %}is <em>already in</em> since {{ item.stamp.strftime('%d.%m. %H:%M') }}{% endif %}!</h3>
+
+    <a href="/add" class="btn btn-primary">add more</a>
   </div>
 {% endblock %}
