@@ -1,8 +1,10 @@
 bottle==0.12.5
-uwsgi==1.9.18.2
 bottle-redis==0.2.1
 redis==2.8.0
 jsonpickle==0.6.1
 jinja2==2.7.1
 requests==2.2.1
 beautifulsoup4==4.3
+
+#uwsgi==1.9.18.2 #for webserver
+werkzeug #for local run
