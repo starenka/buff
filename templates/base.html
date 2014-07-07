@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-responsinve.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -17,17 +18,15 @@
       <li{% if in_ %} class="active"{% endif %}><a href="/in">in</a></li>
       <li{% if read_ %} class="active"{% endif %}><a href="/read">read</a></li>
       <li{% if add_ %} class="active"{% endif %}><a href="/add">add</a></li>
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="input-group">
-            <span class="input-group-addon">/</span>
-            <form action="/search" method="post">
-              <input class="form-control" placeholder="{{ term }}" value="{{ term }}" name="term"/>
+      <li>
+        <div class="input-group">
+          <span class="input-group-addon">/</span>
+          <form action="/search" method="post">
+            <input class="form-control" placeholder="{{ term }}" value="{{ term }}" name="term"/>
             </form>
-            <span class="input-group-btn"><button class="btn btn-default" type="button">Search</button></span>
-          </div>
+          <span class="input-group-btn"><button class="btn btn-default" type="button">Search</button></span>
         </div>
-      </div>
+      </li>
     </ul>
     {% block content %}{% endblock %}
     <a href="https://github.com/starenka/buff" title="Fork me on GitHub">
