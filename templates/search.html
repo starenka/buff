@@ -3,7 +3,7 @@
 
   {% if unread.title or read.title %}
     <div class="panel panel-default">
-      <div class="panel-heading"><strong>&ldquo;{{ term }}&rdquo;</strong> in titles</div>
+      <div class="panel-heading"><strong>&ldquo;{{ term|e }}&rdquo;</strong> in titles</div>
       <div class="list-group">
         {% for hash, one in unread.title %}
           {% include '_unread.html' %}
@@ -17,7 +17,7 @@
 
   {% if unread.url or read.url %}
     <div class="panel panel-default">
-      <div class="panel-heading"><strong>&ldquo;{{ term }}&rdquo;</strong> in URLs</div>
+      <div class="panel-heading"><strong>&ldquo;{{ term|e }}&rdquo;</strong> in URLs</div>
       <div class="list-group">
         {% for hash, one in unread.url %}
           {% include '_unread.html' %}
